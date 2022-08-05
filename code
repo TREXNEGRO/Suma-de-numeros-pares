@@ -1,0 +1,73 @@
+#include <stdio.h>
+
+int leerNumero(); //Para leer el numero ingresado por el usuario
+int estaEnRango(int m); //Para verificar si el numero ingresado está dentro del rango y es par
+int sumaPares(int m); //Para obtener la suma de los numeros pares entre 1 y m
+int esPrimo(int n); //Para verificar si un numero es primo o no
+int sumaPrimos(int m); //Para obtener el producto de los numeros primos entre 1 y m
+
+int main(){
+	
+	int num = 0;
+	do {
+	
+	printf("Ingrese el numero: ");
+	num = leerNumero();
+	
+	}while(estaEnRango(num) != 1);
+	printf("\nSuma de pares: %d", sumaPares(num));
+	printf("\nSuma de primos: %d", sumaPrimos(num));
+	
+	return 0;
+}
+
+
+
+int leerNumero(){
+	int final = 0;
+	scanf("%d", &final);
+	return final;
+}
+int estaEnRango(int m){
+	if(m > 0 && m <= 100){
+		if(m % 2 == 0){
+			return 1;
+		}else{
+			return 0;
+		}
+	}else{
+		return 0;
+	}
+	return 0;
+}
+int sumaPares(int m){
+	int i = 0;
+	int suma = 0;
+	for(i = 1; i <= m; i++){
+		if(i % 2 == 0){
+			suma = suma + i;
+		}
+	}
+	return suma;
+}
+
+int esPrimo(int m){
+	if (m == 0 || m == 1 || m == 4) return 0;
+  	for (int x = 2; x < m / 2; x++) {
+    	if (m % x == 0) return 0;
+  	}
+  // Si no se pudo dividir por ninguno de los de arriba, sí es primo
+  return 1;
+
+}
+
+int sumaPrimos(int m){
+	int suma = 0;
+	int i = 0;
+	for(i = 1 ; i <= m ; i++){
+		if(esPrimo(i) == 1){
+			suma = suma + i;
+		}
+	}
+	return suma;
+}
